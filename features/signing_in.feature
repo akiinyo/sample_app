@@ -1,13 +1,15 @@
-Feature: Signing in
+# language: ja
+フィーチャ: 正しいメールアドレスとユーザー名を入力した時だけSigninできるようにしたい
+  なぜなら、自分のページにSigninしないと意味がないし、不正に使われては困るからだ
 
-  Scenario: Unsuccessful signin
-    Given a user visits the signin page
-    When he submits invalid signin information
-    Then he should see an error message
+  シナリオ: 何も入力しないでSigninボタンを押す
+    前提    signinページを表示する
+    もし    signinボタンをクリックする
+    ならば  エラーメッセージが表示されること
 
-  Scenario: Successful signin
-    Given a user visits the signin page
-    And the user has an account
-    And the user submits valid signin information
-    Then he should see his profile page
-    And he should see a signout link
+  シナリオ: Signin情報を正しく入力した上でSigninボタンを押す
+    前提    signinページを表示する
+    かつ    アカウントを取得している会員がいる
+    かつ    signin情報を入力しsigninボタンをクリックする
+    ならば  その会員のプロフィールページが表示されていること
+    かつ    signoutと表示されていること
