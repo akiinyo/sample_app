@@ -1,10 +1,12 @@
 # coding: utf-8
-Given /^signinページを表示する$/ do
-  visit signin_path
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+
+Given /^"([^"]*)"ページを表示している$/ do |page_name|
+  visit path_to("#{page_name}")
 end
 
-When /^signinボタンをクリックする$/ do
-  click_button "Sign in"
+When /^"([^"]*)"ボタンをクリックする$/ do |button|
+  click_button "#{button}"
 end
 
 Then /^エラーメッセージが表示されること$/ do
@@ -27,6 +29,6 @@ Then /^その会員のプロフィールページが表示されていること$
   page.should have_selector('title', text: @user.name)
 end
 
-Then /^signoutと表示されていること$/ do
-  page.should have_link('Sign out', href: signout_path)
+Then /^"([^"]*)"と表示されていること$/ do |text|
+  page.should have_link("#{text}")
 end
