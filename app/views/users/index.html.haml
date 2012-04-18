@@ -1,8 +1,12 @@
 - provide(:title, 'All users')
 %h1 All users
 
+= paginate @users
+
 %ul.users
   - @users.each do |user|
     %li
       = gravatar_for user, size: 52
       = link_to user.name, user
+
+= paginate @users
