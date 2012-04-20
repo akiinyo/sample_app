@@ -4,10 +4,12 @@
       %section
         = render 'shared/user_info'
       %section
+        = render 'shared/stats'
+      %section
         = render 'shared/micropost_form'
-  %div.span8
-    %h3 Micropost Feed
-    = render 'shared/feed'
+    %div.span8
+      %h3 Micropost Feed
+      = render 'shared/feed'
 - else
   %div.center.hero-unit
     %h1 Welcome to the Sample App
